@@ -24,9 +24,7 @@ namespace :crawl do
     }
 
     urls.each do |type, url|
-      crawl = FreeCrawler.new
-      crawl.fetch url
-      crawl.get_news_page_link
+      CrawlWorker.perform_async(url)
     end
   end
 
@@ -44,9 +42,7 @@ namespace :crawl do
     }
 
     urls.each do |type,url|
-      crawl = UnionCrawler.new
-      crawl.fetch url
-      crawl.get_news_page_link
+      CrawlWorker.perform_async(url)
     end
   end
 
@@ -69,9 +65,7 @@ namespace :crawl do
     }
 
     urls.each do |type,url|
-      crawl = ChinaTimeCrawler.new
-      crawl.fetch url
-      crawl.get_news_page_link
+      CrawlWorker.perform_async(url)
     end
   end
 
