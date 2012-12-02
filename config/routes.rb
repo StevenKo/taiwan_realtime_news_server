@@ -11,7 +11,11 @@ TaiwanRealtimeNewsRails::Application.routes.draw do
         end
       end
       
-      resources :news
+      resources :news do
+        collection do
+          get 'promotion'
+        end
+      end
     end
   end
 end
