@@ -7,7 +7,7 @@ class Api::V1::CategoriesController < Api::ApiController
 
   def all
     #for android init
-    categories = Category.select('id,name').all
+    categories = Category.select('id,name,source_id').all
     render :json => categories.to_json
   end
 end
