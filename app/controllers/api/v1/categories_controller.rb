@@ -4,4 +4,10 @@ class Api::V1::CategoriesController < Api::ApiController
     categories = Category.select('id,name').find_all_by_source_id(source_id)
     render :json => categories.to_json
   end
+
+  def all
+    #for android init
+    categories = Category.select('id,name').all
+    render :json => categories.to_json
+  end
 end

@@ -4,7 +4,13 @@ TaiwanRealtimeNewsRails::Application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :categories
+      
+      resources :categories do
+        collection do
+          get 'all'
+        end
+      end
+      
       resources :news
     end
   end
