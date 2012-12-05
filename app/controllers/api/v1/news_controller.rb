@@ -1,7 +1,7 @@
 class Api::V1::NewsController < Api::ApiController
   def index
     category_id = params[:category_id]
-    @news = News.includes(:pictures).by_release_date_desc.category_news(category_id).paginate(:page => params[:page], :per_page => 15)
+    @news = News.includes(:pictures).by_id_desc.by_release_date_desc.category_news(category_id).paginate(:page => params[:page], :per_page => 15)
     # render :json => news.to_json
   end
 
