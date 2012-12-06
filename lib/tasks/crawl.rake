@@ -76,4 +76,8 @@ namespace :crawl do
     crawl.get_news_page_link
   end
 
+  task :update_promote => :environment do
+    News.update_promote
+  end
+
 end

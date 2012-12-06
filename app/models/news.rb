@@ -13,7 +13,7 @@ class News < ActiveRecord::Base
     (1..5).each do |source_id|
       ids = Category.select('id').find_all_by_source_id(source_id).map{|c| c.id}
       ids.each do |category_id|
-        news = by_id_desc.by_release_date_desc.find_by_category_id(category_id)
+        news = by_id_desc.by_release_date_desc.find_all_by_category_id(1).last
         news.is_promotion = true
         news.save
       end
