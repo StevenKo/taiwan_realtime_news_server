@@ -12,6 +12,6 @@ class Api::V1::NewsController < Api::ApiController
 
   def promotion
     source_id = params[:source_id]
-    @news = News.includes(:pictures).promotion_news(source_id)
+    @news = News.promotion_news(source_id).includes(:pictures).order("category_id ASC")
   end
 end
