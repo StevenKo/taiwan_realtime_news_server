@@ -7,7 +7,7 @@ set :rails_env, "production"
 set :repository,  "https://github.com/StevenKo/taiwan_realtime_news_server.git"
 set :scm, "git"
 set :user, "apps" # 一個伺服器上的帳戶用來放你的應用程式，不需要有sudo權限，但是需要有權限可以讀取Git repository拿到原始碼
-set :port, "22"
+set :port, "222"
 
 
 set :deploy_to, "/home/apps/taiwan_realtime_news_rails"
