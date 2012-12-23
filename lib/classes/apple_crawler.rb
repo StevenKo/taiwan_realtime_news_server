@@ -44,6 +44,7 @@ class AppleCrawler
       news.category = category
       news.source_id = 1
       url = "http://www.appledaily.com.tw" + node.css("a")[0][:href]
+      puts url
       crawler = AppleCrawler.new
       crawler.fetch url
       crawler.get_news news
