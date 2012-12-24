@@ -85,6 +85,7 @@ namespace :crawl do
   end
 
   task :update_promote => :environment do
+    News.update_all(:is_promotion => false)
     News.update_promote
   end
 

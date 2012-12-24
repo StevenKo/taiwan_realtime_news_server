@@ -10,15 +10,11 @@ class News < ActiveRecord::Base
   
   def self.update_promote
     newses = []
-    (1..5).each do |source_id|
-      ids = Category.select('id').find_all_by_source_id(source_id).map{|c| c.id}
-      ids.each do |category_id|
-        news = by_release_date_desc.by_id_desc.find_all_by_category_id(category_id).first
-        news.is_promotion = true
-        newses << news
-      end
+    Category.all.each do |category|
+      news = by_release_date_desc.by_id_desc.find_all_by_category_id(category.id).first
+      news.is_promotion = true
+      newses << news
     end
-    update_all(:is_promotion => false)
     newses.each{|news| news.save}
   end
 end
