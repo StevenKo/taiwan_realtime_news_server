@@ -22,10 +22,14 @@ namespace :crawl do
       "影劇" => "/liveNews/list.php?type=%E5%BD%B1%E5%8A%87",
       "趣聞" => "/liveNews/list.php?type=%E8%B6%A3%E8%81%9E"
     }
-
     urls.each do |type, url|
-      CrawlWorker.perform_async(url)
+      crawl = FreeCrawler.new
+      crawl.fetch url
+      crawl.get_news_page_link
     end
+    # urls.each do |type, url|
+    #   CrawlWorker.perform_async(url)
+    # end
   end
 
   task :crawl_union_news => :environment do
@@ -42,7 +46,9 @@ namespace :crawl do
     }
 
     urls.each do |type,url|
-      CrawlWorker.perform_async(url)
+      crawl = UnionCrawler.new
+      crawl.fetch url
+      crawl.get_news_page_link
     end
   end
 
@@ -65,7 +71,9 @@ namespace :crawl do
     }
 
     urls.each do |type,url|
-      CrawlWorker.perform_async(url)
+      crawl = ChinaTimeCrawler.new
+      crawl.fetch url
+      crawl.get_news_page_link
     end
   end
 
