@@ -11,9 +11,11 @@ class News < ActiveRecord::Base
   def self.update_promote
     newses = []
     Category.all.each do |category|
-      news = by_release_date_desc.by_id_desc.find_all_by_category_id(category.id).first
-      news.is_promotion = true
-      newses << news
+      if category.id < 41
+        news = by_release_date_desc.by_id_desc.find_all_by_category_id(category.id).first
+        news.is_promotion = true
+        newses << news
+      end
     end
     newses.each{|news| news.save}
   end
