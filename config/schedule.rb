@@ -22,7 +22,7 @@
 env :PATH, ENV['PATH']
 
 
-every :day, :at => '07:00am,08:00am,09:00am,10:00am,11:00am,12:00am,01:00pm,02:00pm,03:00pm,04:00pm,05:00pm,06:00pm,07:00pm,08:00pm,09:00pm,10:00pm,11:00pm,12:00pm' do
+every :day, :at => '07:00am,10:00am,02:00pm,05:00pm,08:00pm,10:00pm' do
   rake 'crawl:crawl_apple_news',:output => {:error => 'log/error.log', :standard => 'log/cron.log'}
   rake 'crawl:crawl_free_news',:output => {:error => 'log/error.log', :standard => 'log/cron.log'}
   rake 'crawl:crawl_union_news',:output => {:error => 'log/error.log', :standard => 'log/cron.log'}
@@ -30,6 +30,6 @@ every :day, :at => '07:00am,08:00am,09:00am,10:00am,11:00am,12:00am,01:00pm,02:0
   rake 'crawl:crawl_economy_news',:output => {:error => 'log/error.log', :standard => 'log/cron.log'}
 end
 
-every :day, :at => '07:10am,08:10am,09:10am,10:10am,11:10am,12:10am,01:10pm,02:10pm,03:10pm,04:10pm,05:10pm,06:10pm,07:10pm,08:10pm,09:10pm,10:10pm,11:10pm,12:10pm' do
+every :day, :at => '07:10am,10:10am,02:10pm,05:10pm,08:10pm,10:10pm' do
   rake 'crawl:update_promote',:output => {:error => 'log/error.log', :standard => 'log/cron.log'}
 end
